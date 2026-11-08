@@ -1,0 +1,81 @@
+import { StandardTableView } from "std-widgets.slint";
+
+export component MainWindow inherits Window {
+    background: #122123;
+    maximized: true;
+
+    // Data — Bas yahan badlo, table khud ban jayegi
+    property <[string]> columns: ["Naam", "Umar", "City"];
+    property <[[string]]> rows: [
+        ["Abdullah", "20", "Wah"],
+        ["Ali", "22", "Islamabad"],
+        ["Ahmed", "19", "Lahore"],
+        ["Sara", "21", "Karachi"],
+    ];
+    property <length> Table_Width: 420px;
+
+    VerticalLayout {
+        padding: 20px;
+        alignment: start;
+
+        // Poori Table ka bahar wala dabba — Radius yahan hai
+        Rectangle {
+            width: root.Table_Width;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            clip: true;
+
+            VerticalLayout {
+
+                // HEADER — Ek dabba
+                Rectangle {
+                    height: 40px;
+                    background: #0f0e0e;
+
+                    HorizontalLayout {
+                        spacing: 0px;
+                        for col in columns: Rectangle {
+                            horizontal-stretch: 1;
+                            background: #0f0e0e;
+                            Text {
+                                text: col;
+                                color: white;
+                                font-weight: 800;
+                                horizontal-alignment: center;
+                                vertical-alignment: center;
+                            }
+                        }
+                    }
+                }
+
+                // ROWS — Data se automatic
+                VerticalLayout {
+                    for row in rows: HorizontalLayout {
+                        spacing: 0px;
+                        for cell in row: Rectangle {
+                            height: 40px;
+                            width: root.Table_Width / rows[0].length;
+                            horizontal-stretch: 1;
+                            border-width: 0.5px;
+                            border-color: wheat;
+                            background: ta.has-hover ? #2f2f2f : #4d4d4d;
+
+                            Text {
+                                text: cell;
+                                color: white;
+                                horizontal-alignment: center;
+                                vertical-alignment: center;
+                            }
+
+                            ta := TouchArea {
+                                mouse-cursor: pointer;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

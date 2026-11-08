@@ -1,0 +1,194 @@
+export component MainWindow inherits Window {
+    background: #122123;
+    maximized: true;
+
+    property <[[int]]> numbers: [[1, 2, 3], [4, 5, 6], [7, 8, 9], [-1, 0, -2]];
+
+    property <int> first-num: 0;
+    property <int> second-num: 0;
+    property <string> op: "";
+    property <bool> typing-second: false;
+    property <string> display: "0";
+    VerticalLayout {
+        alignment: end;
+        VerticalLayout {
+            padding-left: 10px;
+            padding-right: 10px;
+            Rectangle {
+                height: 100px;
+                background: #0d0d0d;
+                border-radius: 10px;
+                Text {
+                    text: root.display;
+                    font-size: 30px;
+                    color: white;
+                    horizontal-alignment: right;
+                    vertical-alignment: center;
+                }
+            }
+        }
+
+        VerticalLayout {
+            GridLayout {
+                spacing: 8px;
+                padding: 10px;
+
+                for row in root.numbers: Row {
+                    for num in row: Rectangle {
+                        height: 60px;
+                        background: ta.has-hover ? #2d2d2d : #222222;
+                        border-radius: 10px;
+
+                        Text {
+                            text: num == -1 ? "C" : num == -2 ? "/" : num;
+                            color: white;
+                            font-size: 22px;
+                            font-weight: 800;
+                            horizontal-alignment: center;
+                            vertical-alignment: center;
+                        }
+
+                        ta := TouchArea {
+                            mouse-cursor: pointer;
+                            clicked => {
+                                if num == -1 {
+                                // C — Sab saf karo
+                                root.first-num = 0;
+                                    root.second-num = 0;
+                                    root.op = "";
+                                    root.typing-second = false;
+                                    root.display = "0";
+                                } else if num == -2 {
+                                    // / dabao — Pehle purana hisaab kar lo, phir naya / lo
+                                    if root.op != "" {
+                                        if root.op == "+" {
+                                            root.display = root.first-num + root.second-num;
+                                            root.first-num = root.first-num + root.second-num;
+                                        } else if root.op == "-" {
+                                            root.display = root.first-num - root.second-num;
+                                            root.first-num = root.first-num - root.second-num;
+                                        } else if root.op == "*" {
+                                            root.display = root.first-num * root.second-num;
+                                            root.first-num = root.first-num * root.second-num;
+                                        } else if root.op == "/" {
+                                            if root.second-num != 0 {
+                                                root.display = root.first-num / root.second-num;
+                                                root.first-num = root.first-num / root.second-num;
+                                            } else {
+                                                root.display = "Error";
+                                            }
+                                        }
+                                        root.second-num = 0;
+                                    }
+                                    root.op = "/";
+                                    root.typing-second = true;
+                                    root.display = root.first-num + " / ";
+                                } else {
+                                // Number dabao
+                                if !root.typing-second {
+                                        root.first-num = root.first-num * 10 + num;
+                                        root.display = root.first-num;
+                                    } else {
+                                        root.second-num = root.second-num * 10 + num;
+                                        root.display = root.first-num + " " + root.op + " " + root.second-num;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                Row {
+                    for op in ["+", "*", "-"]: Rectangle {
+                        height: 60px;
+                        background: #222222;
+                        border-radius: 10px;
+                        Text {
+                            text: op;
+                            color: white;
+                            horizontal-alignment: center;
+                            vertical-alignment: center;
+                            font-size: 22px;
+                            font-weight: 800;
+                        }
+
+                        TouchArea {
+                            clicked => {
+                                if root.op != "" {
+                                    if root.op == "+" {
+                                        root.display = root.first-num + root.second-num;
+                                        root.first-num = root.first-num + root.second-num;
+                                    } else if root.op == "-" {
+                                        root.display = root.first-num - root.second-num;
+                                        root.first-num = root.first-num - root.second-num;
+                                    } else if root.op == "*" {
+                                        root.display = root.first-num * root.second-num;
+                                        root.first-num = root.first-num * root.second-num;
+                                    } else if root.op == "/" {
+                                        if root.second-num != 0 {
+                                            root.display = root.first-num / root.second-num;
+                                            root.first-num = root.first-num / root.second-num;
+                                        } else {
+                                            root.display = "Error";
+                                        }
+                                    }
+                                    root.second-num = 0;
+                                }
+                                root.op = op;
+                                root.typing-second = true;
+                                root.display = root.first-num + " " + root.op + " ";
+                            }
+                        }
+                    }
+                }
+
+                // = wala button
+            }
+
+            VerticalLayout {
+                padding-left: 10px;
+                padding-bottom: 10px;
+                padding-right: 10px;
+                Rectangle {
+                    height: 60px;
+                    background: @linear-gradient(90deg, #ffee00, #ff9d00);
+                    border-radius: 10px;
+                    Text {
+                        text: "=";
+                        color: white;
+                        horizontal-alignment: center;
+                        vertical-alignment: center;
+                        font-size: 22px;
+                        font-weight: 800;
+                    }
+
+                    TouchArea {
+                        mouse-cursor: pointer;
+                        clicked => {
+                            if root.op == "+" {
+                                root.display = root.first-num + root.second-num;
+                                root.first-num = root.first-num + root.second-num;
+                            } else if root.op == "-" {
+                                root.display = root.first-num - root.second-num;
+                                root.first-num = root.first-num - root.second-num;
+                            } else if root.op == "*" {
+                                root.display = root.first-num * root.second-num;
+                                root.first-num = root.first-num * root.second-num;
+                            } else if root.op == "/" {
+                                if root.second-num != 0 {
+                                    root.display = root.first-num / root.second-num;
+                                    root.first-num = root.first-num / root.second-num;
+                                } else {
+                                    root.display = "Error";
+                                }
+                            }
+                            root.second-num = 0;
+                            root.op = "";
+                            root.typing-second = false;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

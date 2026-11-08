@@ -1,0 +1,149 @@
+import {
+    SearchIcon,
+    NotificationIcon,
+    CalendarIcon,
+} from "../icons/paths.slint";
+import { TextEdit } from "std-widgets.slint";
+
+export component Header inherits Rectangle {
+
+    in-out property <float> zoom: 1.0;
+    in-out property <string> search-text;
+    property <bool> pl: false;
+    height: 65px * root.zoom;
+
+    VerticalLayout {
+        alignment: center;
+
+        HorizontalLayout {
+
+            HorizontalLayout {
+                padding-left: 50px * root.zoom;
+
+                VerticalLayout {
+                    alignment: center;
+                    Rectangle {
+                        width: 300px * root.zoom;
+                        height: 35px * root.zoom;
+                        background: #1C2026;
+                        border-radius: 50px * root.zoom;
+                        HorizontalLayout {
+                            VerticalLayout {
+                                alignment: center;
+                                padding-left: 15px * root.zoom;
+                                SearchIcon {
+                                    c: #86948A;
+                                    width: 15px * root.zoom;
+                                    height: 15px * root.zoom;
+                                }
+                            }
+
+                            VerticalLayout {
+                                alignment: center;
+                                padding-left: 10px * root.zoom;
+                                sa := TextInput {
+                                    text <=> root.search-text;
+                                    HorizontalLayout {
+                                        alignment: start;
+                                        Rectangle {
+                                            Text {
+                                                horizontal-alignment: start;
+                                                text: root.pl ? "" : "Search expenses...";
+                                                color: #86948A;
+                                                font-size: 14px * root.zoom;
+                                            }
+                                        }
+                                    }
+
+                                    edited => {
+                                        root.pl = true;
+                                        if root.search-text == "" {
+                                            root.pl = false;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            HorizontalLayout {
+                padding-right: 20px * root.zoom;
+                spacing: 10px * root.zoom;
+                alignment: end;
+
+                VerticalLayout {
+                    alignment: center;
+                    Rectangle {
+                        width: 120px * root.zoom;
+                        height: 35px * root.zoom;
+                        background: #1C2026;
+                        border-radius: 50px * root.zoom;
+                        border-width: 1px;
+                        border-color: #3C4A42;
+
+                        HorizontalLayout {
+                            alignment: LayoutAlignment.center;
+                            VerticalLayout {
+                                alignment: center;
+                                CalendarIcon {
+                                    width: 18px * root.zoom;
+                                    height: 18px * root.zoom;
+                                }
+                            }
+
+                            VerticalLayout {
+                                alignment: center;
+
+                                Text {
+                                    text: "Nov 08, 2026";
+                                    font-size: 13px * root.zoom;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                VerticalLayout {
+                    alignment: center;
+                    Rectangle {
+                        width: 40px * root.zoom;
+                        height: 40px * root.zoom;
+                        NotificationIcon { }
+
+                        background: #1C2026;
+                        border-radius: 50px * root.zoom;
+                        border-width: 1px;
+                        border-color: #3C4A42;
+                        TouchArea {
+                            mouse-cursor: pointer;
+                        }
+                    }
+                }
+
+                VerticalLayout {
+                    alignment: center;
+                    Rectangle {
+                        width: 40px * root.zoom;
+                        height: 40px * root.zoom;
+                        border-radius: 50px * root.zoom;
+                        border-width: 1px;
+                        border-color: #3C4A42;
+                        clip: true;
+                        Image {
+                            width: 100%;
+                            height: 100%;
+                            image-fit: cover;
+                            source: @image-url("../../assets/profile.jpg");
+                        }
+
+                        TouchArea {
+                            mouse-cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

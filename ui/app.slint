@@ -1,0 +1,99 @@
+import { Sidebar } from "./components/sidebar.slint";
+import { DashboardPage } from "./pages/dashboard.slint";
+import { ExpensePage } from "./pages/expense.slint";
+import { SettingPage } from "./pages/setting.slint";
+import { HelpPage } from "./pages/help.slint";
+import { Header } from "./components/header.slint";
+import { AppPage } from "./types/types.slint";
+
+export component MainWindow inherits Window {
+    background: #10141A;
+    maximized: true;
+    in-out property <float> zoom: 1.0;
+    in-out property <AppPage> current-page: AppPage.dashboard;
+    property <float> min-zoom: 0.6;
+    property <float> max-zoom: 1.5;
+
+    fs := FocusScope {
+        width: 100%;
+        height: 100%;
+
+        VerticalLayout {
+            HorizontalLayout {
+                Sidebar {
+                    w: 250px * root.zoom;
+                    zoom <=> root.zoom;
+                    current-page <=> root.current-page;
+                }
+
+                Rectangle {
+                    width: 0.6px;
+                    background: #242323;
+                }
+
+                VerticalLayout {
+                    Header {
+                        zoom <=> root.zoom;
+                    }
+
+                    Rectangle {
+                        height: 0.6px;
+                        background: #242323;
+                    }
+
+                    VerticalLayout {
+                        Rectangle {
+                            if root.current-page == AppPage.dashboard: DashboardPage { }
+                            if root.current-page == AppPage.expenses: ExpensePage { }
+                            if root.current-page == AppPage.settings: SettingPage { }
+                            if root.current-page == AppPage.help: HelpPage { }
+                        }
+                    }
+                }
+            }
+        }
+
+        key-pressed(event) => {
+            // Up / Down — Page badlo!
+            if event.text == Key.UpArrow {
+                if root.current-page == AppPage.expenses {
+                    root.current-page = AppPage.dashboard;
+                } else if root.current-page == AppPage.settings {
+                    root.current-page = AppPage.expenses;
+                } else if root.current-page == AppPage.help {
+                    root.current-page = AppPage.settings;
+                }
+                accept
+            } else if event.text == Key.DownArrow {
+                if root.current-page == AppPage.dashboard {
+                    root.current-page = AppPage.expenses;
+                } else if root.current-page == AppPage.expenses {
+                    root.current-page = AppPage.settings;
+                } else if root.current-page == AppPage.settings {
+                    root.current-page = AppPage.help;
+                }
+                accept
+            // Ctrl + = / - / 0 — Zoom! Limit ke saath!
+            } else if event.modifiers.control && event.text == "=" {
+                if root.zoom < root.max-zoom {
+                    root.zoom = Math.min(root.zoom + 0.1, root.max-zoom);
+                }
+                accept
+            } else if event.modifiers.control && event.text == "-" {
+                if root.zoom > root.min-zoom {
+                    root.zoom = Math.max(root.zoom - 0.1, root.min-zoom);
+                }
+                accept
+            } else if event.modifiers.control && event.text == "0" {
+                root.zoom = 1.0;
+                accept
+            } else {
+                reject
+            }
+        }
+    }
+
+    init => {
+        fs.focus();
+    }
+}

@@ -1,0 +1,53 @@
+import { Sidebar, NavTab } from "./sidebar.slint";
+import { DashboardPage } from "./dashboard-page.slint";
+import { ProfilePage } from "./profile-page.slint";
+import { SettingPage } from "./setting-page.slint";
+import { Header } from "component/header.slint";
+
+export component AppWindow inherits Window {
+    background: #161615;
+
+    in-out property <length> app-width: 1280px;
+    in-out property <length> app-height: 720px;
+    width: app-width;
+    height: app-height;
+    callback screen-ready();
+    init => {
+        root.screen-ready();
+    }
+
+    property <NavTab> current-tab: NavTab.Dashboard;
+
+    HorizontalLayout {
+
+        Sidebar {
+            current-selection <=> root.current-tab;
+        }
+
+        VerticalLayout {
+
+            Header { }
+
+            Rectangle {
+                vertical-stretch: 1;
+                background: #161615;
+                clip: true;
+
+                DashboardPage {
+
+                    visible: root.current-tab == NavTab.Dashboard;
+                }
+
+                ProfilePage {
+
+                    visible: root.current-tab == NavTab.Profile;
+                }
+
+                SettingPage {
+
+                    visible: root.current-tab == NavTab.Setting;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,218 @@
+import {
+    DashboardIcon,
+    DocumentIcon,
+    SettingsIcon,
+    HelpIcon,
+} from "../icons/paths.slint";
+import { AppPage } from "../types/types.slint";
+
+export component Sidebar inherits Rectangle {
+    in-out property <AppPage> current-page: AppPage.dashboard;
+    in-out property <length> w;
+    in-out property <float> zoom: 1.0;
+    width: root.w;
+    background: #0A0E14;
+
+    VerticalLayout {
+        VerticalLayout {
+            alignment: start;
+            VerticalLayout {
+                padding-top: 20px * root.zoom;
+                alignment: start;
+                Rectangle {
+                    HorizontalLayout {
+                        padding-left: 20px * root.zoom;
+                        Text {
+                            text: "ExpenseTrack";
+                            font-size: 20px * root.zoom;
+                            font-weight: 600;
+                            color: #DFE2EB;
+                        }
+                    }
+                }
+            }
+
+            VerticalLayout {
+                spacing: 2px * root.zoom;
+                padding: 20px * root.zoom;
+                VerticalLayout {
+                    padding-bottom: 5px * root.zoom;
+                    padding-left: 8px * root.zoom;
+                    Text {
+                        text: "MENU";
+                        color: #86948A;
+                        font-size: 11px * root.zoom;
+                    }
+                }
+
+                Rectangle {
+                    height: 40px * root.zoom;
+                    background: root.current-page == AppPage.dashboard ? #10B981 : transparent;
+                    border-radius: 50px * root.zoom;
+                    drop-shadow-blur: 10px * root.zoom;
+                    drop-shadow-color: root.current-page == AppPage.dashboard ? #10B981 : transparent;
+                    drop-shadow-offset-x: 0px;
+                    drop-shadow-offset-y: 2px * root.zoom;
+                    VerticalLayout {
+                        alignment: center;
+                        padding-left: 20px * root.zoom;
+                        HorizontalLayout {
+                            VerticalLayout {
+                                alignment: center;
+                                padding-right: 10px * root.zoom;
+                                DashboardIcon {
+                                    width: 20px * root.zoom;
+                                    height: 20px * root.zoom;
+                                    c: root.current-page == AppPage.dashboard ? #00422B : #BBCABF;
+                                }
+                            }
+
+                            HorizontalLayout {
+                                VerticalLayout {
+                                    Text {
+                                        text: "Dashboard";
+                                        font-size: 16px * root.zoom;
+                                        color: root.current-page == AppPage.dashboard ? #00422B : #BBCABF;
+                                        font-weight: 550;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    TouchArea {
+                        clicked => {
+                            root.current-page = AppPage.dashboard;
+                        }
+                    }
+                }
+
+                Rectangle {
+                    height: 40px * root.zoom;
+                    background: root.current-page == AppPage.expenses ? #10B981 : transparent;
+                    border-radius: 50px * root.zoom;
+                    drop-shadow-blur: 10px * root.zoom;
+                    drop-shadow-color: root.current-page == AppPage.expenses ? #10B981 : transparent;
+                    drop-shadow-offset-x: 0px;
+                    drop-shadow-offset-y: 2px * root.zoom;
+                    VerticalLayout {
+                        alignment: center;
+                        padding-left: 20px * root.zoom;
+                        HorizontalLayout {
+                            VerticalLayout {
+                                alignment: center;
+                                padding-right: 10px * root.zoom;
+                                DocumentIcon {
+                                    width: 22px * root.zoom;
+                                    height: 22px * root.zoom;
+                                    c: root.current-page == AppPage.expenses ? #00422B : #BBCABF;
+                                }
+                            }
+
+                            HorizontalLayout {
+                                VerticalLayout {
+                                    Text {
+                                        text: "Expenses";
+                                        font-size: 16px * root.zoom;
+                                        color: root.current-page == AppPage.expenses ? #00422B : #BBCABF;
+                                        font-weight: 550;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    TouchArea {
+                        clicked => {
+                            root.current-page = AppPage.expenses;
+                        }
+                    }
+                }
+
+                Rectangle {
+                    height: 40px * root.zoom;
+                    background: root.current-page == AppPage.settings ? #10B981 : transparent;
+                    border-radius: 50px * root.zoom;
+                    drop-shadow-blur: 10px * root.zoom;
+                    drop-shadow-color: root.current-page == AppPage.settings ? #10B981 : transparent;
+                    drop-shadow-offset-x: 0px;
+                    drop-shadow-offset-y: 2px * root.zoom;
+                    VerticalLayout {
+                        alignment: center;
+                        padding-left: 20px * root.zoom;
+                        HorizontalLayout {
+                            VerticalLayout {
+                                alignment: center;
+                                padding-right: 10px * root.zoom;
+                                SettingsIcon {
+                                    width: 22px * root.zoom;
+                                    height: 22px * root.zoom;
+                                    c: root.current-page == AppPage.settings ? #00422B : #BBCABF;
+                                }
+                            }
+
+                            HorizontalLayout {
+                                VerticalLayout {
+                                    Text {
+                                        text: "Settings";
+                                        font-size: 16px * root.zoom;
+                                        color: root.current-page == AppPage.settings ? #00422B : #BBCABF;
+                                        font-weight: 550;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    TouchArea {
+                        clicked => {
+                            root.current-page = AppPage.settings;
+                        }
+                    }
+                }
+
+                Rectangle {
+                    height: 40px * root.zoom;
+                    background: root.current-page == AppPage.help ? #10B981 : transparent;
+                    border-radius: 50px * root.zoom;
+                    drop-shadow-blur: 10px * root.zoom;
+                    drop-shadow-color: root.current-page == AppPage.help ? #10B981 : transparent;
+                    drop-shadow-offset-x: 0px;
+                    drop-shadow-offset-y: 2px * root.zoom;
+                    VerticalLayout {
+                        alignment: center;
+                        padding-left: 20px * root.zoom;
+                        HorizontalLayout {
+                            VerticalLayout {
+                                alignment: center;
+                                padding-right: 10px * root.zoom;
+                                HelpIcon {
+                                    width: 22px * root.zoom;
+                                    height: 22px * root.zoom;
+                                    c: root.current-page == AppPage.help ? #00422B : #BBCABF;
+                                }
+                            }
+
+                            HorizontalLayout {
+                                VerticalLayout {
+                                    Text {
+                                        text: "Help";
+                                        font-size: 16px * root.zoom;
+                                        color: root.current-page == AppPage.help ? #00422B : #BBCABF;
+                                        font-weight: 550;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    TouchArea {
+                        clicked => {
+                            root.current-page = AppPage.help;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
