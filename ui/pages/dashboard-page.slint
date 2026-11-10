@@ -1,27 +1,86 @@
 import { DashboardHero } from "../components/dashboard/DashboardHero.slint";
 import { BottomDock } from "../components/dashboard/BottomDock.slint";
-
+import { StateCards } from "../components/dashboard/StateCards.slint";
+import { WeeklyChart } from "../components/dashboard/WeeklyChart.slint";
+import { RecentExpenses } from "../components/dashboard/RecentExpenses.slint";
+import { ExpensesState } from "../components/dashboard/ExpensesState.slint";
 
 export component DashboardPage inherits Rectangle {
-    in-out property <float> zoom;
+    in-out property <float> zoom: 1.0;
 
-    VerticalLayout {
+    HorizontalLayout {
         VerticalLayout {
+            HorizontalLayout {
+                alignment: center;
+                VerticalLayout {
 
-            DashboardHero {
-                zoom <=> root.zoom;
+                    Flickable {
+
+                        VerticalLayout {
+                            padding: 20px * root.zoom;
+                            spacing: 20px * root.zoom;
+                            DashboardHero {
+                                zoom <=> root.zoom;
+                            }
+
+                            if root.width > 900px * root.zoom: GridLayout {
+                                spacing: 30px * root.zoom;
+
+                                Row {
+                                    ExpensesState {
+                                        zoom <=> root.zoom;
+                                    }
+
+                                    StateCards {
+                                        zoom <=> root.zoom;
+                                    }
+                                }
+
+                                Row {
+                                    WeeklyChart {
+                                        zoom <=> root.zoom;
+                                    }
+
+                                    RecentExpenses {
+                                        zoom <=> root.zoom;
+                                    }
+                                }
+                            }
+
+                            if root.width <= 900px * root.zoom: VerticalLayout {
+                                spacing: 30px * root.zoom;
+
+                                ExpensesState {
+                                    zoom <=> root.zoom;
+                                }
+
+                                StateCards {
+                                    zoom <=> root.zoom;
+                                }
+
+                                WeeklyChart {
+                                    zoom <=> root.zoom;
+                                }
+
+                                RecentExpenses {
+                                    zoom <=> root.zoom;
+                                }
+                            }
+                        }
+                    }
+                }
             }
-        }
 
-        VerticalLayout {
-            alignment: end;
-            Rectangle {
-                height: 1px;
-                background: #242323;
-            }
+            VerticalLayout {
+                alignment: end;
+                Rectangle {
+                    height: 1px;
+                    background: #242323;
+                }
 
-            BottomDock {
-                zoom <=> root.zoom;
+                BottomDock {
+                    zoom <=> root.zoom;
+                }
             }
         }
     }

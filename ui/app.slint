@@ -10,11 +10,17 @@ export component MainWindow inherits Window {
     background: #10141A;
     maximized: true;
     full-screen: root.f-mode;
+
+    min-width: 850px;
+    min-height: 640px;
+    preferred-width: 850px;
+    preferred-height: 720px;
+
     in-out property <float> zoom: 1.0;
     in-out property <AppPage> current-page: AppPage.dashboard;
     property <float> min-zoom: 0.8;
     property <float> max-zoom: 1.2;
-    property <bool> f-mode:true;
+    property <bool> f-mode: true;
 
     fs := FocusScope {
         width: 100%;
@@ -23,7 +29,7 @@ export component MainWindow inherits Window {
         VerticalLayout {
             HorizontalLayout {
                 Sidebar {
-                    w: 250px * root.zoom;
+                    w: 280px * root.zoom;
                     zoom <=> root.zoom;
                     current-page <=> root.current-page;
                 }

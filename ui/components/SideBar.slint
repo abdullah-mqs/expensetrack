@@ -17,14 +17,14 @@ export component Sidebar inherits Rectangle {
         VerticalLayout {
             alignment: start;
             VerticalLayout {
-                padding-top: 18px * root.zoom;
+                padding-top: 21.6px * root.zoom;
                 alignment: start;
                 Rectangle {
                     HorizontalLayout {
-                        padding-left: 18px * root.zoom;
+                        padding-left: 21.6px * root.zoom;
                         Text {
                             text: "ExpenseTrack";
-                            font-size: 18px * root.zoom;
+                            font-size: 21.6px * root.zoom;
                             font-weight: 600;
                             color: #DFE2EB;
                         }
@@ -33,36 +33,36 @@ export component Sidebar inherits Rectangle {
             }
 
             VerticalLayout {
-                spacing: 1.8px * root.zoom;
-                padding: 18px * root.zoom;
+                spacing: 2.16px * root.zoom;
+                padding: 21.6px * root.zoom;
                 VerticalLayout {
-                    padding-bottom: 4.5px * root.zoom;
-                    padding-left: 7.2px * root.zoom;
+                    padding-bottom: 5.4px * root.zoom;
+                    padding-left: 8.64px * root.zoom;
                     Text {
                         text: "MENU";
                         color: #86948A;
-                        font-size: 9.9px * root.zoom;
+                        font-size: 11.88px * root.zoom;
                     }
                 }
 
                 Rectangle {
-                    height: 36px * root.zoom;
+                    height: 43.2px * root.zoom;
                     background: root.current-page == AppPage.dashboard ? #10B981 : transparent;
-                    border-radius: 45px * root.zoom;
-                    drop-shadow-blur: 9px * root.zoom;
+                    border-radius: 54px * root.zoom;
+                    drop-shadow-blur: 10.8px * root.zoom;
                     drop-shadow-color: root.current-page == AppPage.dashboard ? #10B981 : transparent;
                     drop-shadow-offset-x: 0px;
-                    drop-shadow-offset-y: 1.8px * root.zoom;
+                    drop-shadow-offset-y: 2.16px * root.zoom;
                     VerticalLayout {
                         alignment: center;
-                        padding-left: 18px * root.zoom;
+                        padding-left: 21.6px * root.zoom;
                         HorizontalLayout {
                             VerticalLayout {
                                 alignment: center;
-                                padding-right: 9px * root.zoom;
+                                padding-right: 10.8px * root.zoom;
                                 DashboardIcon {
-                                    width: 18px * root.zoom;
-                                    height: 18px * root.zoom;
+                                    width: 21.6px * root.zoom;
+                                    height: 21.6px * root.zoom;
                                     c: root.current-page == AppPage.dashboard ? #00422B : #BBCABF;
                                 }
                             }
@@ -71,7 +71,7 @@ export component Sidebar inherits Rectangle {
                                 VerticalLayout {
                                     Text {
                                         text: "Dashboard";
-                                        font-size: 14.4px * root.zoom;
+                                        font-size: 17.28px * root.zoom;
                                         color: root.current-page == AppPage.dashboard ? #00422B : #BBCABF;
                                         font-weight: 550;
                                     }
@@ -88,23 +88,23 @@ export component Sidebar inherits Rectangle {
                 }
 
                 Rectangle {
-                    height: 36px * root.zoom;
+                    height: 43.2px * root.zoom;
                     background: root.current-page == AppPage.expenses ? #10B981 : transparent;
-                    border-radius: 45px * root.zoom;
-                    drop-shadow-blur: 9px * root.zoom;
+                    border-radius: 54px * root.zoom;
+                    drop-shadow-blur: 10.8px * root.zoom;
                     drop-shadow-color: root.current-page == AppPage.expenses ? #10B981 : transparent;
                     drop-shadow-offset-x: 0px;
-                    drop-shadow-offset-y: 1.8px * root.zoom;
+                    drop-shadow-offset-y: 2.16px * root.zoom;
                     VerticalLayout {
                         alignment: center;
-                        padding-left: 18px * root.zoom;
+                        padding-left: 21.6px * root.zoom;
                         HorizontalLayout {
                             VerticalLayout {
                                 alignment: center;
-                                padding-right: 9px * root.zoom;
+                                padding-right: 10.8px * root.zoom;
                                 DocumentIcon {
-                                    width: 19.8px * root.zoom;
-                                    height: 19.8px * root.zoom;
+                                    width: 23.76px * root.zoom;
+                                    height: 23.76px * root.zoom;
                                     c: root.current-page == AppPage.expenses ? #00422B : #BBCABF;
                                 }
                             }
@@ -113,7 +113,7 @@ export component Sidebar inherits Rectangle {
                                 VerticalLayout {
                                     Text {
                                         text: "Expenses";
-                                        font-size: 14.4px * root.zoom;
+                                        font-size: 17.28px * root.zoom;
                                         color: root.current-page == AppPage.expenses ? #00422B : #BBCABF;
                                         font-weight: 550;
                                     }
@@ -130,23 +130,23 @@ export component Sidebar inherits Rectangle {
                 }
 
                 Rectangle {
-                    height: 36px * root.zoom;
+                    height: 43.2px * root.zoom;
                     background: root.current-page == AppPage.settings ? #10B981 : transparent;
-                    border-radius: 45px * root.zoom;
-                    drop-shadow-blur: 9px * root.zoom;
+                    border-radius: 54px * root.zoom;
+                    drop-shadow-blur: 10.8px * root.zoom;
                     drop-shadow-color: root.current-page == AppPage.settings ? #10B981 : transparent;
                     drop-shadow-offset-x: 0px;
-                    drop-shadow-offset-y: 1.8px * root.zoom;
+                    drop-shadow-offset-y: 2.16px * root.zoom;
                     VerticalLayout {
                         alignment: center;
-                        padding-left: 18px * root.zoom;
+                        padding-left: 21.6px * root.zoom;
                         HorizontalLayout {
                             VerticalLayout {
                                 alignment: center;
-                                padding-right: 9px * root.zoom;
+                                padding-right: 10.8px * root.zoom;
                                 SettingsIcon {
-                                    width: 19.8px * root.zoom;
-                                    height: 19.8px * root.zoom;
+                                    width: 23.76px * root.zoom;
+                                    height: 23.76px * root.zoom;
                                     c: root.current-page == AppPage.settings ? #00422B : #BBCABF;
                                 }
                             }
@@ -155,7 +155,7 @@ export component Sidebar inherits Rectangle {
                                 VerticalLayout {
                                     Text {
                                         text: "Settings";
-                                        font-size: 14.4px * root.zoom;
+                                        font-size: 17.28px * root.zoom;
                                         color: root.current-page == AppPage.settings ? #00422B : #BBCABF;
                                         font-weight: 550;
                                     }
@@ -172,23 +172,23 @@ export component Sidebar inherits Rectangle {
                 }
 
                 Rectangle {
-                    height: 36px * root.zoom;
+                    height: 43.2px * root.zoom;
                     background: root.current-page == AppPage.help ? #10B981 : transparent;
-                    border-radius: 45px * root.zoom;
-                    drop-shadow-blur: 9px * root.zoom;
+                    border-radius: 54px * root.zoom;
+                    drop-shadow-blur: 10.8px * root.zoom;
                     drop-shadow-color: root.current-page == AppPage.help ? #10B981 : transparent;
                     drop-shadow-offset-x: 0px;
-                    drop-shadow-offset-y: 1.8px * root.zoom;
+                    drop-shadow-offset-y: 2.16px * root.zoom;
                     VerticalLayout {
                         alignment: center;
-                        padding-left: 18px * root.zoom;
+                        padding-left: 21.6px * root.zoom;
                         HorizontalLayout {
                             VerticalLayout {
                                 alignment: center;
-                                padding-right: 9px * root.zoom;
+                                padding-right: 10.8px * root.zoom;
                                 HelpIcon {
-                                    width: 19.8px * root.zoom;
-                                    height: 19.8px * root.zoom;
+                                    width: 23.76px * root.zoom;
+                                    height: 23.76px * root.zoom;
                                     c: root.current-page == AppPage.help ? #00422B : #BBCABF;
                                 }
                             }
@@ -197,7 +197,7 @@ export component Sidebar inherits Rectangle {
                                 VerticalLayout {
                                     Text {
                                         text: "Help";
-                                        font-size: 14.4px * root.zoom;
+                                        font-size: 17.28px * root.zoom;
                                         color: root.current-page == AppPage.help ? #00422B : #BBCABF;
                                         font-weight: 550;
                                     }

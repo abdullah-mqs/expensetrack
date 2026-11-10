@@ -1,0 +1,11 @@
+export component WeeklyChart inherits Rectangle {
+    in-out property <float> zoom;
+    width: 468px;
+    height: 310px;
+    background: #181C22;
+    border-radius: 16px;
+    drop-shadow-blur: 24px * root.zoom;
+    drop-shadow-color: #080808;
+    drop-shadow-offset-x: 0px;
+    drop-shadow-offset-y: 8px * root.zoom;
+}

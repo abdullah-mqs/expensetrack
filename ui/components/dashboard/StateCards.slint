@@ -1,0 +1,38 @@
+import { HorizontalBox } from "std-widgets.slint";
+export component StateCards inherits Rectangle {
+
+    in-out property <length> main_height:192px;
+    in-out property <float> zoom;
+    height: root.main_height;
+
+    HorizontalLayout {
+        spacing: 30px;
+        VerticalLayout {
+
+            Rectangle {
+                width: 219px;
+                height: 188px;
+                background: #181C22;
+                border-radius: 16px;
+                drop-shadow-blur: 24px * root.zoom;
+                drop-shadow-color: #080808;
+                drop-shadow-offset-x: 0px;
+                drop-shadow-offset-y: 8px * root.zoom;
+            }
+        }
+
+        VerticalLayout {
+
+            Rectangle {
+                width: 219px;
+                height: 188px;
+                background: #181C22;
+                border-radius: 16px;
+                drop-shadow-blur: 24px * root.zoom;
+                drop-shadow-color: #080808;
+                drop-shadow-offset-x: 0px;
+                drop-shadow-offset-y: 8px * root.zoom;
+            }
+        }
+    }
+}

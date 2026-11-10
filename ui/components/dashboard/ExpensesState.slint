@@ -1,0 +1,19 @@
+export component ExpensesState inherits Rectangle {
+    in-out property <length> main_height:192px;
+    in-out property <float> zoom;
+    VerticalLayout {
+        alignment: center;
+        Rectangle {
+            width: 468px;
+            height: root.main_height;
+            background: @linear-gradient(135deg, #05E777, #10B981, #00874C);
+            border-radius: 16px;
+
+            drop-shadow-blur: 12px;
+            drop-shadow-color: #05E777;
+            drop-shadow-offset-x: 0px;
+            drop-shadow-offset-y: 5px;
+            drop-shadow-spread: -6px;
+        }
+    }
+}

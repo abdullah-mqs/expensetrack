@@ -4,9 +4,9 @@ export component DashboardHero inherits Rectangle {
     height: 70px * root.zoom;
     in-out property <float> zoom;
     HorizontalLayout {
+
         VerticalLayout {
             alignment: center;
-            padding-left: 40px * root.zoom;
             Text {
                 text: "Dashboard";
                 color: #DFE2EB;
@@ -15,7 +15,7 @@ export component DashboardHero inherits Rectangle {
             }
 
             Text {
-                text: "Overview of your daily and periodic expenditure";
+                text: "Overview of your daily expenses";
                 color: #86948A;
                 font-size: 11px * root.zoom;
             }
@@ -23,7 +23,6 @@ export component DashboardHero inherits Rectangle {
 
         HorizontalLayout {
             alignment: end;
-            padding-right: 30px * root.zoom;
             spacing: 10px * root.zoom;
             VerticalLayout {
                 alignment: center;
