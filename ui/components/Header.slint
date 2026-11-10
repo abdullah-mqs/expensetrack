@@ -10,7 +10,7 @@ export component Header inherits Rectangle {
     in-out property <float> zoom: 1.0;
     in-out property <string> search-text;
     property <bool> pl: false;
-    height: 65px * root.zoom;
+    height: 58.5px * root.zoom;
 
     VerticalLayout {
         alignment: center;
@@ -18,29 +18,29 @@ export component Header inherits Rectangle {
         HorizontalLayout {
 
             HorizontalLayout {
-                padding-left: 50px * root.zoom;
+                padding-left: 45px * root.zoom;
 
                 VerticalLayout {
                     alignment: center;
                     Rectangle {
-                        width: 300px * root.zoom;
-                        height: 35px * root.zoom;
+                        width: 270px * root.zoom;
+                        height: 31.5px * root.zoom;
                         background: #1C2026;
-                        border-radius: 50px * root.zoom;
+                        border-radius: 45px * root.zoom;
                         HorizontalLayout {
                             VerticalLayout {
                                 alignment: center;
-                                padding-left: 15px * root.zoom;
+                                padding-left: 13.5px * root.zoom;
                                 SearchIcon {
                                     c: #86948A;
-                                    width: 15px * root.zoom;
-                                    height: 15px * root.zoom;
+                                    width: 13.5px * root.zoom;
+                                    height: 13.5px * root.zoom;
                                 }
                             }
 
                             VerticalLayout {
                                 alignment: center;
-                                padding-left: 10px * root.zoom;
+                                padding-left: 9px * root.zoom;
                                 sa := TextInput {
                                     text <=> root.search-text;
                                     HorizontalLayout {
@@ -50,7 +50,7 @@ export component Header inherits Rectangle {
                                                 horizontal-alignment: start;
                                                 text: root.pl ? "" : "Search expenses...";
                                                 color: #86948A;
-                                                font-size: 14px * root.zoom;
+                                                font-size: 12.6px * root.zoom;
                                             }
                                         }
                                     }
@@ -69,17 +69,17 @@ export component Header inherits Rectangle {
             }
 
             HorizontalLayout {
-                padding-right: 20px * root.zoom;
-                spacing: 10px * root.zoom;
+                padding-right: 18px * root.zoom;
+                spacing: 9px * root.zoom;
                 alignment: end;
 
                 VerticalLayout {
                     alignment: center;
                     Rectangle {
-                        width: 120px * root.zoom;
-                        height: 35px * root.zoom;
+                        width: 108px * root.zoom;
+                        height: 31.5px * root.zoom;
                         background: #1C2026;
-                        border-radius: 50px * root.zoom;
+                        border-radius: 45px * root.zoom;
                         border-width: 1px;
                         border-color: #3C4A42;
 
@@ -88,8 +88,8 @@ export component Header inherits Rectangle {
                             VerticalLayout {
                                 alignment: center;
                                 CalendarIcon {
-                                    width: 18px * root.zoom;
-                                    height: 18px * root.zoom;
+                                    width: 16.2px * root.zoom;
+                                    height: 16.2px * root.zoom;
                                 }
                             }
 
@@ -98,7 +98,7 @@ export component Header inherits Rectangle {
 
                                 Text {
                                     text: "Nov 08, 2026";
-                                    font-size: 13px * root.zoom;
+                                    font-size: 11.7px * root.zoom;
                                 }
                             }
                         }
@@ -108,12 +108,12 @@ export component Header inherits Rectangle {
                 VerticalLayout {
                     alignment: center;
                     Rectangle {
-                        width: 40px * root.zoom;
-                        height: 40px * root.zoom;
+                        width: 36px * root.zoom;
+                        height: 36px * root.zoom;
                         NotificationIcon { }
 
                         background: #1C2026;
-                        border-radius: 50px * root.zoom;
+                        border-radius: 45px * root.zoom;
                         border-width: 1px;
                         border-color: #3C4A42;
                         TouchArea {
@@ -125,9 +125,9 @@ export component Header inherits Rectangle {
                 VerticalLayout {
                     alignment: center;
                     Rectangle {
-                        width: 40px * root.zoom;
-                        height: 40px * root.zoom;
-                        border-radius: 50px * root.zoom;
+                        width: 36px * root.zoom;
+                        height: 36px * root.zoom;
+                        border-radius: 45px * root.zoom;
                         border-width: 1px;
                         border-color: #3C4A42;
                         clip: true;

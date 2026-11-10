@@ -1,0 +1,94 @@
+import { DownloadIcon, PlusIcon } from "../../icons/paths.slint";
+
+export component DashboardHero inherits Rectangle {
+    height: 70px * root.zoom;
+    in-out property <float> zoom;
+    HorizontalLayout {
+        VerticalLayout {
+            alignment: center;
+            padding-left: 40px * root.zoom;
+            Text {
+                text: "Dashboard";
+                color: #DFE2EB;
+                font-size: 25px * root.zoom;
+                font-weight: 600;
+            }
+
+            Text {
+                text: "Overview of your daily and periodic expenditure";
+                color: #86948A;
+                font-size: 11px * root.zoom;
+            }
+        }
+
+        HorizontalLayout {
+            alignment: end;
+            padding-right: 30px * root.zoom;
+            spacing: 10px * root.zoom;
+            VerticalLayout {
+                alignment: center;
+                Rectangle {
+                    width: 100px * root.zoom;
+                    height: 35px * root.zoom;
+                    background: #262A31;
+                    border-radius: 30px * root.zoom;
+
+                    HorizontalLayout {
+                        alignment: center;
+                        VerticalLayout {
+                            alignment: center;
+                            DownloadIcon {
+                                width: 15px * root.zoom;
+                                height: 15px * root.zoom;
+                                icon-color: #DFE2EB;
+                            }
+                        }
+
+                        VerticalLayout {
+                            alignment: center;
+                            padding-left: 5px * root.zoom;
+                            padding-bottom: 2px * root.zoom;
+                            Text {
+                                text: "Export";
+                                color: #DFE2EB;
+                                font-size: 14px * root.zoom;
+                            }
+                        }
+                    }
+                }
+            }
+
+            VerticalLayout {
+                alignment: center;
+                Rectangle {
+                    width: 130px * root.zoom;
+                    height: 35px * root.zoom;
+                    background: #10B981;
+                    border-radius: 30px * root.zoom;
+
+                    HorizontalLayout {
+                        alignment: center;
+                        VerticalLayout {
+                            alignment: center;
+                            PlusIcon {
+                                width: 10px * root.zoom;
+                                height: 10px * root.zoom;
+                            }
+                        }
+
+                        VerticalLayout {
+                            alignment: center;
+                            padding-left: 5px * root.zoom;
+                            padding-bottom: 2px * root.zoom;
+                            Text {
+                                text: "Add Expense";
+                                color: #00422B;
+                                font-size: 14px * root.zoom;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

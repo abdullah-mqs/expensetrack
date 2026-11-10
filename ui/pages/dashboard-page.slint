@@ -1,0 +1,28 @@
+import { DashboardHero } from "../components/dashboard/DashboardHero.slint";
+import { BottomDock } from "../components/dashboard/BottomDock.slint";
+
+
+export component DashboardPage inherits Rectangle {
+    in-out property <float> zoom;
+
+    VerticalLayout {
+        VerticalLayout {
+
+            DashboardHero {
+                zoom <=> root.zoom;
+            }
+        }
+
+        VerticalLayout {
+            alignment: end;
+            Rectangle {
+                height: 1px;
+                background: #242323;
+            }
+
+            BottomDock {
+                zoom <=> root.zoom;
+            }
+        }
+    }
+}

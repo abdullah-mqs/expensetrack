@@ -1,0 +1,81 @@
+export component BottomDock inherits Rectangle {
+
+    in-out property <float> zoom: 1.0;
+
+    height: 45px * root.zoom;
+    HorizontalLayout {
+
+        VerticalLayout {
+            alignment: center;
+            padding-left: 10px * root.zoom;
+            Rectangle {
+                width: 9px * root.zoom;
+                height: 9px * root.zoom;
+                background: #05E777;
+                border-radius: 10px * root.zoom;
+            }
+        }
+
+        HorizontalLayout {
+            alignment: start;
+            VerticalLayout {
+                alignment: center;
+                padding-left: 6px * root.zoom;
+                padding-bottom: 3px * root.zoom;
+                Rectangle {
+                    Text {
+                        horizontal-alignment: start;
+
+                        text: "Updated just now";
+                        color: #86948A;
+                        font-size: 13px * root.zoom;
+                    }
+                }
+            }
+
+            VerticalLayout {
+                alignment: center;
+                padding-left: 8px * root.zoom;
+                Rectangle {
+                    width: 5px * root.zoom;
+                    height: 5px * root.zoom;
+                    background: #86948A;
+                    border-radius: 10px * root.zoom;
+                }
+            }
+
+            VerticalLayout {
+                alignment: center;
+                padding-left: 6px * root.zoom;
+                padding-bottom: 3px * root.zoom;
+                Rectangle {
+                    Text {
+                        horizontal-alignment: start;
+
+                        text: "Data refreshes automatically";
+                        color: #86948A;
+                        font-size: 13px * root.zoom;
+                    }
+                }
+            }
+        }
+
+        HorizontalLayout {
+            alignment: end;
+            VerticalLayout {
+                alignment: center;
+                padding-right: 10px * root.zoom;
+                padding-bottom: 3px * root.zoom;
+                Rectangle {
+                    Text {
+                        horizontal-alignment: start;
+
+                        text: "ExpenseTrack v2.4";
+                        color: #86948A;
+                        font-size: 13px * root.zoom;
+                    }
+                }
+            }
+        }
+    }
+}

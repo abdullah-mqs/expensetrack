@@ -1,18 +1,20 @@
-import { Sidebar } from "./components/sidebar.slint";
-import { DashboardPage } from "./pages/dashboard.slint";
-import { ExpensePage } from "./pages/expense.slint";
-import { SettingPage } from "./pages/setting.slint";
-import { HelpPage } from "./pages/help.slint";
-import { Header } from "./components/header.slint";
+import { Sidebar } from "./components/SideBar.slint";
+import { DashboardPage } from "./pages/dashboard-page.slint";
+import { ExpensePage } from "./pages/expenses-page.slint";
+import { SettingPage } from "./pages/settings-page.slint";
+import { HelpPage } from "./pages/help-page.slint";
+import { Header } from "./components/Header.slint";
 import { AppPage } from "./types/types.slint";
 
 export component MainWindow inherits Window {
     background: #10141A;
     maximized: true;
+    full-screen: root.f-mode;
     in-out property <float> zoom: 1.0;
     in-out property <AppPage> current-page: AppPage.dashboard;
-    property <float> min-zoom: 0.6;
-    property <float> max-zoom: 1.5;
+    property <float> min-zoom: 0.8;
+    property <float> max-zoom: 1.2;
+    property <bool> f-mode:true;
 
     fs := FocusScope {
         width: 100%;
@@ -43,7 +45,9 @@ export component MainWindow inherits Window {
 
                     VerticalLayout {
                         Rectangle {
-                            if root.current-page == AppPage.dashboard: DashboardPage { }
+                            if root.current-page == AppPage.dashboard: DashboardPage {
+                                zoom <=> root.zoom;
+                            }
                             if root.current-page == AppPage.expenses: ExpensePage { }
                             if root.current-page == AppPage.settings: SettingPage { }
                             if root.current-page == AppPage.help: HelpPage { }
@@ -86,6 +90,9 @@ export component MainWindow inherits Window {
                 accept
             } else if event.modifiers.control && event.text == "0" {
                 root.zoom = 1.0;
+                accept
+            } else if event.text == Key.F11 {
+                root.f-mode = !root.f-mode;
                 accept
             } else {
                 reject
