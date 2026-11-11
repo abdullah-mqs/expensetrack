@@ -1,14 +1,218 @@
+import {
+    CoffeeIcon,
+    TransportIcon,
+    GroceriesIcon,
+    MobileIcon,
+} from "../../icons/paths.slint";
+
 export component RecentExpenses inherits Rectangle {
-
-    in-out property <float> zoom;
-
-    width: 468px;
-
-    height: 310px;
+    in-out property <float> zoom: 1.0;
+    width: 468px * root.zoom;
+    height: 310px * root.zoom;
     background: #181C22;
-    border-radius: 16px;
+    border-radius: 16px * root.zoom;
     drop-shadow-blur: 24px * root.zoom;
     drop-shadow-color: #080808;
     drop-shadow-offset-x: 0px;
     drop-shadow-offset-y: 8px * root.zoom;
+
+    property <[{
+        name: string,
+        amount: string,
+        category: string,
+        cat-bg: color,
+        cat-fg: color,
+        icon-type: string
+    }]> expenses-data: [
+        {
+            name: "Coffee",
+            amount: "120 Rs",
+            category: "Food",
+            cat-bg: #2B2318,
+            cat-fg: #F59E0B,
+            icon-type: "coffee"
+        },
+        {
+            name: "Uber Ride",
+            amount: "250 Rs",
+            category: "Transport",
+            cat-bg: #192231,
+            cat-fg: #3B82F6,
+            icon-type: "transport"
+        },
+        {
+            name: "Groceries",
+            amount: "130 Rs",
+            category: "Groceries",
+            cat-bg: #251B31,
+            cat-fg: #A855F7,
+            icon-type: "groceries"
+        },
+        {
+            name: "Mobile Recharge",
+            amount: "300 Rs",
+            category: "Utilities",
+            cat-bg: #152927,
+            cat-fg: #14B8A6,
+            icon-type: "mobile"
+        }
+    ];
+
+    VerticalLayout {
+        padding-bottom: 25px * root.zoom;
+        padding-left: 25px * root.zoom;
+        padding-right: 25px * root.zoom;
+        padding-top: 20px * root.zoom;
+        spacing: 12px * root.zoom;
+
+        // Header Row: Title & "View all"
+        HorizontalLayout {
+            alignment: space-between;
+
+            Text {
+                text: "Recent Expenses";
+                color: #FFFFFF;
+                font-size: 18px * root.zoom;
+                font-weight: 600;
+            }
+
+            Text {
+                text: "View all";
+                color: #10B981;
+                font-size: 13px * root.zoom;
+                font-weight: 550;
+                ta-all := TouchArea {
+                    mouse-cursor: pointer;
+                }
+            }
+        }
+
+        Rectangle {
+            background: #1C2026;
+            border-radius: 10px;
+            HorizontalLayout {
+                padding-top: 6px * root.zoom;
+                padding-bottom: 6px * root.zoom;
+                alignment: LayoutAlignment.space-evenly;
+                Text {
+                    text: "Naam";
+                    color: #8D948F;
+                    font-size: 12px * root.zoom;
+                    width: 170px * root.zoom;
+                }
+
+                Text {
+                    text: "Amount";
+                    color: #8D948F;
+                    font-size: 12px * root.zoom;
+                    width: 110px * root.zoom;
+                }
+
+                Text {
+                    text: "Category";
+                    color: #8D948F;
+                    font-size: 12px * root.zoom;
+                    horizontal-alignment: right;
+                    width: 100px * root.zoom;
+                }
+            }
+        }
+
+        // Loop through expenses data rows
+        for item in root.expenses-data: HorizontalLayout {
+            height: 42px * root.zoom;
+            alignment: space-between;
+
+            // Left: Icon Circle + Name
+            HorizontalLayout {
+                spacing: 12px * root.zoom;
+                width: 170px * root.zoom;
+
+                // Icon Background Circle
+                Rectangle {
+                    width: 36px * root.zoom;
+                    height: 36px * root.zoom;
+                    background: item.cat-bg;
+                    border-radius: 18px * root.zoom;
+
+                    VerticalLayout {
+                        alignment: center;
+                        HorizontalLayout {
+                            alignment: center;
+                            // Conditional rendering / mapping of icons based on type
+                            if item.icon-type == "coffee": CoffeeIcon {
+                                icon-color: item.cat-fg;
+                                width: 18px * root.zoom;
+                                height: 18px * root.zoom;
+                            }
+                            if item.icon-type == "transport": TransportIcon {
+                                icon-color: item.cat-fg;
+                                width: 18px * root.zoom;
+                                height: 18px * root.zoom;
+                            }
+                            if item.icon-type == "groceries": GroceriesIcon {
+                                icon-color: item.cat-fg;
+                                width: 18px * root.zoom;
+                                height: 18px * root.zoom;
+                            }
+                            if item.icon-type == "mobile": MobileIcon {
+                                icon-color: item.cat-fg;
+                                width: 18px * root.zoom;
+                                height: 18px * root.zoom;
+                            }
+                        }
+                    }
+                }
+
+                VerticalLayout {
+                    alignment: center;
+                    Text {
+                        text: item.name;
+                        color: #DFE2EB;
+                        font-size: 14px * root.zoom;
+                        font-weight: 500;
+                    }
+                }
+            }
+
+            // Middle: Amount
+            VerticalLayout {
+                alignment: center;
+                width: 110px * root.zoom;
+                Text {
+                    text: item.amount;
+                    color: #DFE2EB;
+                    font-size: 14px * root.zoom;
+                    font-weight: 600;
+                }
+            }
+
+            // Right: Category Pill Badge
+            VerticalLayout {
+                alignment: center;
+                width: 100px * root.zoom;
+
+                HorizontalLayout {
+                    alignment: end;
+                    Rectangle {
+                        width: 80px * root.zoom;
+                        height: 24px * root.zoom;
+                        background: item.cat-bg;
+                        border-radius: 12px * root.zoom;
+
+                        VerticalLayout {
+                            alignment: center;
+                            Text {
+                                text: item.category;
+                                color: item.cat-fg;
+                                font-size: 11px * root.zoom;
+                                font-weight: 550;
+                                horizontal-alignment: center;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

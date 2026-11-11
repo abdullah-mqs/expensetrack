@@ -1,19 +1,107 @@
-export component ExpensesState inherits Rectangle {
-    in-out property <length> main_height:192px;
-    in-out property <float> zoom;
-    VerticalLayout {
-        alignment: center;
-        Rectangle {
-            width: 468px;
-            height: root.main_height;
-            background: @linear-gradient(135deg, #05E777, #10B981, #00874C);
-            border-radius: 16px;
+import { WalletIcon, TrendingUpIcon } from "../../icons/paths.slint";
+import "../../fonts/PlusJakartaSans-VariableFont_wght.ttf";
 
-            drop-shadow-blur: 12px;
-            drop-shadow-color: #05E777;
-            drop-shadow-offset-x: 0px;
-            drop-shadow-offset-y: 5px;
-            drop-shadow-spread: -6px;
+export component ExpensesState inherits Rectangle {
+    in-out property <length> main_height: 192px * root.zoom;
+    in-out property <float> zoom: 1.0;
+
+    width: 468px * root.zoom;
+    height: root.main_height;
+    background: @linear-gradient(135deg, #05E777, #10B981, #00874C);
+    border-radius: 16px * root.zoom;
+
+    drop-shadow-blur: 12px * root.zoom;
+    drop-shadow-color: #05E777;
+    drop-shadow-offset-x: 0px;
+    drop-shadow-offset-y: 5px * root.zoom;
+    drop-shadow-spread: -6px;
+
+    HorizontalLayout {
+        padding: 20px * root.zoom;
+        padding-bottom: 25px * root.zoom;
+
+        VerticalLayout {
+            alignment: space-between;
+
+            HorizontalLayout {
+                spacing: 8px * root.zoom;
+                alignment: start;
+
+                WalletIcon {
+                    icon-color: #00422B;
+                    width: 26px * root.zoom;
+                    height: 26px * root.zoom;
+                    stroke-width: 1.8px;
+                }
+
+                Text {
+                    text: "Today's Expense";
+                    color: #00422B;
+                    font-size: 20px * root.zoom;
+                    font-weight: 450;
+                }
+            }
+
+            HorizontalLayout {
+                alignment: start;
+                spacing: 6px * root.zoom;
+
+                Text {
+                    text: "500";
+                    color: #FFFFFF;
+                    font-size: 45px * root.zoom;
+                    font-weight: 700;
+                    font-family: "Plus Jakarta Sans";
+                }
+
+                Text {
+                    text: "Rs";
+                    color: #FFFFFF;
+                    font-size: 25px * root.zoom;
+                    font-family: "Plus Jakarta Sans";
+                    font-weight: 600;
+                    y: 14px * root.zoom;
+                }
+            }
+
+            HorizontalLayout {
+                spacing: 6px * root.zoom;
+                alignment: start;
+
+                TrendingUpIcon {
+                    icon-color: #FFFFFF;
+                    width: 15px * root.zoom;
+                    height: 15px * root.zoom;
+                }
+
+                Text {
+                    text: "+12% vs yesterday";
+                    color: #FFFFFF;
+                    font-size: 13px * root.zoom;
+                    font-weight: 550;
+                }
+            }
+        }
+
+        VerticalLayout {
+            alignment: start;
+            padding-top: 5px * root.zoom;
+
+            Rectangle {
+                width: 55px * root.zoom;
+                height: 55px * root.zoom;
+                background: #50c59c;
+                border-radius: 27.5px * root.zoom;
+
+                WalletIcon {
+                    x: (parent.width - self.width) / 2;
+                    y: (parent.height - self.height) / 2;
+                    icon-color: #FFFFFF;
+                    width: 30px * root.zoom;
+                    height: 30px * root.zoom;
+                    stroke-width: 2.5px;
+                }
+            }
         }
     }
 }

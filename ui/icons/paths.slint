@@ -144,3 +144,168 @@ export component PlusIcon inherits Rectangle {
         commands: "M 11,4 H 13 V 11 H 20 V 13 H 13 V 20 H 11 V 13 H 4 V 11 H 11 Z";
     }
 }
+
+
+// Wallet Icon (From official SVG)
+export component WalletIcon inherits Rectangle {
+    width: 20px;
+    height: 20px;
+    in-out property <brush> icon-color: #4ade80;
+    in-out property <length> stroke-width;
+    Path {
+        width: 100%;
+        height: 100%;
+        stroke: root.icon-color;
+        stroke-width: root.stroke-width;
+        stroke-line-cap: round;
+        fill: transparent;
+
+        viewbox-width: 24;
+        viewbox-height: 24;
+
+        commands: "M 18 8 V 7.2 C 18 6.0799 18 5.51984 17.782 5.09202 C 17.5903 4.71569 17.2843 4.40973 16.908 4.21799 C 16.4802 4 15.9201 4 14.8 4 H 6.2 C 5.07989 4 4.51984 4 4.09202 4.21799 C 3.71569 4.40973 3.40973 4.71569 3.21799 5.09202 C 3 5.51984 3 6.0799 3 7.2 V 8 M 21 12 H 19 C 17.8954 12 17 12.8954 17 14 C 17 15.1046 17.8954 16 19 16 H 21 M 3 8 V 16.8 C 3 17.9201 3 18.4802 3.21799 18.908 C 3.40973 19.2843 3.71569 19.5903 4.09202 19.782 C 4.51984 20 5.07989 20 6.2 20 H 17.8 C 18.9201 20 19.4802 20 19.908 19.782 C 20.2843 19.5903 20.5903 19.2843 20.782 18.908 C 21 18.4802 21 17.9201 21 16.8 V 11.2 C 21 10.0799 21 9.51984 20.782 9.09202 C 20.5903 8.71569 20.2843 8.40973 19.908 8.21799 C 19.4802 8 18.9201 8 17.8 8 H 3 Z";
+    }
+}
+
+// Trending Up Icon (From official SVG)
+export component TrendingUpIcon inherits Rectangle {
+    width: 20px;
+    height: 20px;
+    in-out property <brush> icon-color: #4ade80;
+
+    Path {
+        width: 100%;
+        height: 100%;
+        stroke: root.icon-color;
+        stroke-width: 1.9px;
+        stroke-line-cap: round;
+        fill: transparent;
+
+        commands: "M 20.0005 7 L 14.1543 12.9375 C 14.0493 13.0441 13.9962 13.0976 13.9492 13.1396 C 13.1899 13.8193 12.0416 13.8193 11.2822 13.1396 C 11.2352 13.0976 11.1817 13.0442 11.0767 12.9375 C 10.9716 12.8308 10.9191 12.7774 10.8721 12.7354 C 10.1127 12.0557 8.96397 12.0557 8.20461 12.7354 C 8.15771 12.7773 8.10532 12.8305 8.00078 12.9367 L 4 17 M 20.0005 7 L 20 13 M 20.0005 7 H 14";
+    }
+}
+
+// Calendar View Week Icon (Outer box + 4 vertical columns)
+export component CalendarViewWeekIcon inherits Rectangle {
+    width: 20px;
+    height: 20px;
+    in-out property <brush> icon-color: #4ade80;
+
+    Path {
+        width: 100%;
+        height: 100%;
+        stroke: root.icon-color;
+        stroke-width: 1.5px;
+        stroke-line-cap: round;
+        fill: transparent;
+
+        // Outer rounded border + 4 vertical column bars inside
+        commands: "M 3 5 H 21 A 2 2 0 0 1 23 7 V 17 A 2 2 0 0 1 21 19 H 3 A 2 2 0 0 1 1 17 V 7 A 2 2 0 0 1 3 5 Z M 6 8 V 16 M 10 8 V 16 M 14 8 V 16 M 18 8 V 16";
+    }
+}
+
+// Calendar Grid Icon (Clean Stroke Outline Style)
+export component CalendarGridIcon inherits Rectangle {
+    width: 20px;
+    height: 20px;
+    in-out property <brush> icon-color: #4ade80;
+
+    Path {
+        width: 100%;
+        height: 100%;
+        stroke: root.icon-color;
+        stroke-width: 1.5px;
+        stroke-line-cap: round;
+        fill: transparent;
+
+        viewbox-width: 24;
+        viewbox-height: 24;
+
+        // Calendar outer box, top hooks, separator line, and grid dots for dates
+        commands: "M 19 4 H 5 A 2 2 0 0 0 3 6 V 20 A 2 2 0 0 0 5 22 H 19 A 2 2 0 0 0 21 20 V 6 A 2 2 0 0 0 19 4 Z M 3 10 H 21 M 8 2 V 6 M 16 2 V 6 M 8 14 H 8.01 M 12 14 H 12.01 M 16 14 H 16.01 M 8 18 H 8.01 M 12 18 H 12.01 M 16 18 H 16.01";
+    }
+}
+
+
+// Ticket / Coupon Icon (From official SVG)
+export component TicketIcon inherits Rectangle {
+    width: 20px;
+    height: 20px;
+    in-out property <brush> icon-color: #4ade80;
+
+    Path {
+        width: 100%;
+        height: 100%;
+        stroke: root.icon-color;
+        stroke-width: 1.5px;
+        stroke-line-cap: round;
+        fill: transparent;
+
+        commands: "M 9 9 H 15 M 9 12 H 15 M 9 15 H 15 M 5 3 V 21 L 8 19 L 10 21 L 12 19 L 14 21 L 16 19 L 19 21 V 3 L 16 5 L 14 3 L 12 5 L 10 3 L 8 5 L 5 3 Z";
+    }
+}
+
+
+// Bar Chart / Analytics Icon (Solid filled bars with stroke container)
+export component BarChartIcon inherits Rectangle {
+    width: 20px;
+    height: 20px;
+    in-out property <brush> icon-color: #4ade80;
+
+    Path {
+        width: 100%;
+        height: 100%;
+        fill: root.icon-color;
+
+        commands: "M 17 10 H 20 V 19 H 17 Z M 10 5 H 13 V 19 H 10 Z M 3 13 H 6 V 19 H 3 Z";
+    }
+}
+
+
+// Coffee / Cup Icon
+export component CoffeeIcon inherits Rectangle {
+    in property <color> icon-color: #D97706;
+    width: 20px;
+    height: 20px;
+    Path {
+        stroke: root.icon-color;
+        stroke-width: 2px;
+        commands: "M4 6h12a2 2 0 0 1 2 2v1a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8a2 2 0 0 1 2-2zm14 3h2a1 1 0 0 1 1 1v2a2 2 0 0 1-2 2h-2M6 16h10";
+    }
+}
+
+// Transport / Car Icon
+export component TransportIcon inherits Rectangle {
+    in property <color> icon-color: #3B82F6;
+    width: 20px;
+    height: 20px;
+    Path {
+        stroke: root.icon-color;
+        stroke-width: 2px;
+        commands: "M5 11l1.5-4.5A2 2 0 0 1 8.4 5h7.2a2 2 0 0 1 1.9 1.5L19 11M4 11h16v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-5zM6 15h1M17 15h1";
+    }
+}
+
+// Groceries / Shopping Cart Icon
+export component GroceriesIcon inherits Rectangle {
+    in property <color> icon-color: #A855F7;
+    width: 20px;
+    height: 20px;
+    Path {
+        stroke: root.icon-color;
+        stroke-width: 2px;
+        commands: "M6 6h15l-1.5 9h-12L6 6zM6 6L4 3H2M9 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm10 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z";
+    }
+}
+
+// Mobile / Utilities Phone Icon
+export component MobileIcon inherits Rectangle {
+    in property <color> icon-color: #14B8A6;
+    width: 20px;
+    height: 20px;
+    Path {
+        stroke: root.icon-color;
+        stroke-width: 2px;
+        commands: "M7 2h10a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1zm5 13h.01";
+    }
+}

@@ -1,11 +1,147 @@
 export component WeeklyChart inherits Rectangle {
-    in-out property <float> zoom;
-    width: 468px;
-    height: 310px;
+    in-out property <float> zoom: 1.0;
+    width: 468px * root.zoom;
+    height: 310px * root.zoom;
     background: #181C22;
-    border-radius: 16px;
+    border-radius: 16px * root.zoom;
     drop-shadow-blur: 24px * root.zoom;
     drop-shadow-color: #080808;
     drop-shadow-offset-x: 0px;
     drop-shadow-offset-y: 8px * root.zoom;
+
+    // Sample data structure for the 7 days (Mon to Sun)
+    property <[{ day: string, height: length, amount: string }]> week-data: [
+        { day: "Mon", height: 50px, amount: "500" },
+        { day: "Tue", height: 75px, amount: "900" },
+        { day: "Wed", height: 115px, amount: "1500" },
+        { day: "Thu", height: 95px, amount: "1200" },
+        { day: "Fri", height: 130px, amount: "1900" },
+        { day: "Sat", height: 85px, amount: "1100" },
+        { day: "Sun", height: 60px, amount: "650" }
+    ];
+
+    VerticalLayout {
+        padding: 22px * root.zoom;
+        alignment: space-between;
+
+        // 1. Top Header Area
+        HorizontalLayout {
+            alignment: space-between;
+
+            VerticalLayout {
+                spacing: 4px * root.zoom;
+                Text {
+                    text: "Weekly Expenses";
+                    color: #FFFFFF;
+                    font-size: 18px * root.zoom;
+                    font-weight: 600;
+                }
+
+                Text {
+                    text: "Last 7 days";
+                    color: #86948A;
+                    font-size: 13px * root.zoom;
+                }
+            }
+
+            // Spent Badge (Exact Original Structure)
+            Rectangle {
+                width: 75px * root.zoom;
+                height: 28px * root.zoom;
+                background: #1E232B;
+                border-radius: 14px * root.zoom;
+
+                VerticalLayout {
+                    alignment: center;
+                    HorizontalLayout {
+                        alignment: center;
+                        spacing: 6px * root.zoom;
+
+                        VerticalLayout {
+                            alignment: center;
+                            Rectangle {
+                                width: 7px * root.zoom;
+                                height: 7px * root.zoom;
+                                background: #05E777;
+                                border-radius: 3.5px * root.zoom;
+                            }
+                        }
+
+                        VerticalLayout {
+                            alignment: center;
+                            Text {
+                                text: "Spent";
+                                color: #DFE2EB;
+                                font-size: 12px * root.zoom;
+                                font-weight: 550;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // 2. Middle Chart Area (Grid lines + Bars)
+        Rectangle {
+            height: 140px * root.zoom;
+
+            // Faint horizontal grid lines to give chart depth
+            VerticalLayout {
+                alignment: space-between;
+                Rectangle {
+                    height: 1px;
+                    background: #222831;
+                }
+
+                Rectangle {
+                    height: 1px;
+                    background: #222831;
+                }
+
+                Rectangle {
+                    height: 1px;
+                    background: #222831;
+                }
+            }
+
+            // Bars rendered via for loop aligned at the bottom
+            HorizontalLayout {
+                alignment: space-around;
+                padding-bottom: 5px * root.zoom;
+
+                for data in root.week-data: VerticalLayout {
+                    alignment: end;
+                    spacing: 8px * root.zoom;
+
+                    // Individual Bar with Figma 3-stop gradient & smooth hover
+                    Rectangle {
+                        width: 26px * root.zoom;
+                        height: data.height * root.zoom;
+                        background: ta.has-hover
+                            ? @linear-gradient(180deg, #86FFB0 0%, #10B981 60%, #005C3B 100%)
+                            : @linear-gradient(180deg, #62FF96 0%, #10B981 60%, #00422B 100%);
+                        border-radius: 6px * root.zoom;
+                        animate background { duration: 180ms; }
+
+                        ta := TouchArea {
+                            mouse-cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+
+        // 3. Bottom Days Label Row (Mon - Sun)
+        HorizontalLayout {
+            alignment: space-around;
+            for data in root.week-data: Text {
+                text: data.day;
+                color: #86948A;
+                font-size: 13px * root.zoom;
+                font-weight: 500;
+                width: 26px * root.zoom;
+                horizontal-alignment: center;
+            }
+        }
+    }
 }

@@ -1,37 +1,191 @@
 import { HorizontalBox } from "std-widgets.slint";
-export component StateCards inherits Rectangle {
+import {
+    CalendarViewWeekIcon,
+    TicketIcon,
+    CalendarGridIcon,
+    BarChartIcon,
+} from "../../icons/paths.slint";
 
-    in-out property <length> main_height:192px;
-    in-out property <float> zoom;
+export component StateCards inherits Rectangle {
+    in-out property <length> main_height: 192px * root.zoom;
+    in-out property <float> zoom: 1.0;
+
     height: root.main_height;
 
     HorizontalLayout {
-        spacing: 30px;
-        VerticalLayout {
+        spacing: 30px * root.zoom;
 
+        // --- Card 1: This Week ---
+        VerticalLayout {
             Rectangle {
-                width: 219px;
-                height: 188px;
+                width: 219px * root.zoom;
+                height: 188px * root.zoom;
                 background: #181C22;
-                border-radius: 16px;
+                border-radius: 16px * root.zoom;
                 drop-shadow-blur: 24px * root.zoom;
                 drop-shadow-color: #080808;
                 drop-shadow-offset-x: 0px;
                 drop-shadow-offset-y: 8px * root.zoom;
+
+                VerticalLayout {
+                    padding: 20px * root.zoom;
+                    alignment: space-evenly;
+
+                    // Top Row: Title & Week Icon
+                    HorizontalLayout {
+                        alignment: space-between;
+
+                        Text {
+                            text: "This Week";
+                            color: #86948A;
+                            font-size: 16px * root.zoom;
+                            font-weight: 550;
+                        }
+
+                        CalendarViewWeekIcon {
+                            icon-color: #86948A;
+                            width: 23px * root.zoom;
+                            height: 23px * root.zoom;
+                        }
+                    }
+
+                    // Middle Row: Amount & Currency
+                    HorizontalLayout {
+                        alignment: start;
+                        spacing: 6px * root.zoom;
+
+                        VerticalLayout {
+                            alignment: center;
+                            Text {
+                                text: "2,340";
+                                color: #DFE2EB;
+                                font-size: 30px * root.zoom;
+                                font-weight: 600;
+                            }
+                        }
+
+                        VerticalLayout {
+                            alignment: center;
+                            Text {
+                                text: "Rs";
+                                color: #DFE2EB;
+                                font-size: 20px * root.zoom;
+                                font-weight: 600;
+                            }
+                        }
+                    }
+
+                    // Bottom Row: Transactions Info
+                    HorizontalLayout {
+                        spacing: 5px * root.zoom;
+                        alignment: start;
+
+                        VerticalLayout {
+                            alignment: center;
+                            TicketIcon {
+                                width: 12px * root.zoom;
+                                height: 12px * root.zoom;
+                                icon-color: #86948A;
+                            }
+                        }
+
+                        VerticalLayout {
+                            alignment: center;
+                            Text {
+                                text: "7 transactions";
+                                font-size: 12px * root.zoom;
+                                color: #86948A;
+                            }
+                        }
+                    }
+                }
             }
         }
 
+        // --- Card 2: This Month ---
         VerticalLayout {
-
             Rectangle {
-                width: 219px;
-                height: 188px;
+                width: 219px * root.zoom;
+                height: 188px * root.zoom;
                 background: #181C22;
-                border-radius: 16px;
+                border-radius: 16px * root.zoom;
                 drop-shadow-blur: 24px * root.zoom;
                 drop-shadow-color: #080808;
                 drop-shadow-offset-x: 0px;
                 drop-shadow-offset-y: 8px * root.zoom;
+
+                VerticalLayout {
+                    padding: 20px * root.zoom;
+                    alignment: space-evenly;
+
+                    // Top Row: Title & Month Icon
+                    HorizontalLayout {
+                        alignment: space-between;
+
+                        Text {
+                            text: "This Month";
+                            color: #86948A;
+                            font-size: 16px * root.zoom;
+                            font-weight: 550;
+                        }
+
+                        CalendarGridIcon {
+                            icon-color: #86948A;
+                            width: 20px * root.zoom;
+                            height: 20px * root.zoom;
+                        }
+                    }
+
+                    // Middle Row: Amount & Currency
+                    HorizontalLayout {
+                        alignment: start;
+                        spacing: 6px * root.zoom;
+
+                        VerticalLayout {
+                            alignment: center;
+                            Text {
+                                text: "11,200";
+                                color: #DFE2EB;
+                                font-size: 30px * root.zoom;
+                                font-weight: 600;
+                            }
+                        }
+
+                        VerticalLayout {
+                            alignment: center;
+                            Text {
+                                text: "Rs";
+                                color: #DFE2EB;
+                                font-size: 20px * root.zoom;
+                                font-weight: 600;
+                            }
+                        }
+                    }
+
+                    // Bottom Row: Transactions Info
+                    HorizontalLayout {
+                        spacing: 5px * root.zoom;
+                        alignment: start;
+
+                        VerticalLayout {
+                            alignment: center;
+                            BarChartIcon {
+                                width: 12px * root.zoom;
+                                height: 12px * root.zoom;
+                                icon-color: #86948A;
+                            }
+                        }
+
+                        VerticalLayout {
+                            alignment: center;
+                            Text {
+                                text: "38 transactions";
+                                font-size: 12px * root.zoom;
+                                color: #86948A;
+                            }
+                        }
+                    }
+                }
             }
         }
     }

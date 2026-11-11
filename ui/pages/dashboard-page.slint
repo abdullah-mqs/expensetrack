@@ -19,12 +19,10 @@ export component DashboardPage inherits Rectangle {
                         VerticalLayout {
                             padding: 20px * root.zoom;
                             spacing: 20px * root.zoom;
-                            DashboardHero {
-                                zoom <=> root.zoom;
-                            }
+                            DashboardHero { }
 
                             if root.width > 900px * root.zoom: GridLayout {
-                                spacing: 30px * root.zoom;
+                                spacing: 30px;
 
                                 Row {
                                     ExpensesState {
@@ -50,21 +48,13 @@ export component DashboardPage inherits Rectangle {
                             if root.width <= 900px * root.zoom: VerticalLayout {
                                 spacing: 30px * root.zoom;
 
-                                ExpensesState {
-                                    zoom <=> root.zoom;
-                                }
+                                ExpensesState { }
 
-                                StateCards {
-                                    zoom <=> root.zoom;
-                                }
+                                StateCards { }
 
-                                WeeklyChart {
-                                    zoom <=> root.zoom;
-                                }
+                                WeeklyChart { }
 
-                                RecentExpenses {
-                                    zoom <=> root.zoom;
-                                }
+                                RecentExpenses { }
                             }
                         }
                     }
