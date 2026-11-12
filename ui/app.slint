@@ -10,12 +10,12 @@ export component MainWindow inherits Window {
     background: #10141A;
     maximized: true;
     full-screen: root.f-mode;
-
+    title: "Expensetrack";
     min-width: 850px;
     min-height: 640px;
     preferred-width: 850px;
     preferred-height: 720px;
-
+    icon: @image-url("../assets/image.png");
     in-out property <float> zoom: 1.0;
     in-out property <AppPage> current-page: AppPage.dashboard;
     property <float> min-zoom: 0.8;
